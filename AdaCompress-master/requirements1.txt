@@ -1,0 +1,9 @@
+Keras
+#res_manager
+numpy
+tensorflow_gpu
+boto3
+opencv_python
+matplotlib
+#Algorithmia
+Pillow
