@@ -44,8 +44,8 @@ class EnvironmentAPI(object):
 
         self.gen_ref(reference_quality)
         self.reset()
-        # self.cache = defaultdict(dict)
-        self.load_cache(cache_path)
+        self.cache = defaultdict(dict)
+        # self.load_cache(cache_path)
 
     def load_cache(self, cache_path):
         with open(cache_path, 'rb') as f:
@@ -60,7 +60,7 @@ class EnvironmentAPI(object):
         image_labels = []
 
         img_classes = os.listdir(self.imagenet_train_path)
-        # img_classes = img_classes[0:10]
+        img_classes = img_classes[0:20]
         for img_class in img_classes:
             for image_name in np.random.choice(os.listdir("%s/%s" % (self.imagenet_train_path, img_class)),
                                                size=self.samples_per_class):

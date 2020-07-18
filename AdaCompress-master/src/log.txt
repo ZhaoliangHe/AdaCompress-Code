@@ -1,0 +1,28 @@
+父进程pid: 29886
+子进程运行中，pid=29915...
+子进程将要结束...
+[<keras.engine.sequential.Sequential object at 0x7fc7da1ca940>]
+xx []
+['/home/imagenet-data/train//n02116738/n02116738_68.JPEG', '/home/imagenet-data/train//n02116738/n02116738_10328.JPEG', '/home/imagenet-data/train//n03481172/n03481172_43280.JPEG', '/home/imagenet-data/train//n03481172/n03481172_2499.JPEG', '/home/imagenet-data/train//n02795169/n02795169_20343.JPEG', '/home/imagenet-data/train//n02795169/n02795169_7251.JPEG', '/home/imagenet-data/train//n11939491/n11939491_48131.JPEG', '/home/imagenet-data/train//n11939491/n11939491_59315.JPEG', '/home/imagenet-data/train//n02999410/n02999410_3909.JPEG', '/home/imagenet-data/train//n02999410/n02999410_17016.JPEG']
+0
+[]
+xxx
+[]
+1
+[<keras.engine.sequential.Sequential object at 0x7fc7da1ca940>]
+2
+[<keras.engine.sequential.Sequential object at 0x7fc7da1ca940>]
+3
+[<keras.engine.sequential.Sequential object at 0x7fc7da1ca940>]
+4
+[<keras.engine.sequential.Sequential object at 0x7fc7da1ca940>]
+5
+[<keras.engine.sequential.Sequential object at 0x7fc7da1ca940>]
+6
+[<keras.engine.sequential.Sequential object at 0x7fc7da1ca940>]
+7
+[<keras.engine.sequential.Sequential object at 0x7fc7da1ca940>]
+8
+[<keras.engine.sequential.Sequential object at 0x7fc7da1ca940>]
+9
+[<keras.engine.sequential.Sequential object at 0x7fc7da1ca940>]

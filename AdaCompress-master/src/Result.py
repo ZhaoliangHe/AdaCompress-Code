@@ -16,7 +16,7 @@ def print_cache_train(train_log):
     print("epsilon ",np.mean(train_epsilon))
     print("\n")
 
-def print_cache(face_train):
+def print_result(face_train):
     image_path = [i[0] for i in list(face_train.items())]
     results = [i[1] for i in list(face_train.items())]
     error_codes = [i["error_code"] for i in list(results)]
@@ -30,7 +30,7 @@ def print_cache(face_train):
     print("banchmark_qs75 ",banchmark_qs.count(75))
     print("\n")
 
-def print_cache_log(inference_log):
+def print_log(inference_log):
     inference_path = inference_log["image_path"]
     inference_status = inference_log["status"]
     inference_accuracy = inference_log["accuracy"]
@@ -42,20 +42,38 @@ def print_cache_log(inference_log):
     print("acc ", np.mean(inference_accuracy))
     print("size ", np.mean(inference_size_reward))
     print("action ", np.mean(inference_action))
-    print("action100 ", np.mean(inference_action[:100]))
+    # print("action100 ", np.mean(inference_action[:100]))
     print("\n")
+def compute_att(result,att_name):
+    results = [i[1] for i in list(result.items())]
+    att = [i[att_name] for i in list(results)]
+    att_mean = np.mean(att)
+    print("the number of %s is %d " % (att_name,len(att)))
+    return att_mean
 
 if __name__=="__main__":
     # ref_cache结果
-    with open("evaluation_results/image_reference_cache_face_retrain_DNIM.defaultdict","rb") as file:
-        face_retrain_DNIM = pk.load(file)
+    # with open("evaluation_results/image_reference_cache_face_retrain_DNIM.defaultdict","rb") as file:
+    #     face_retrain_DNIM = pk.load(file)
+    with open("evaluation_results/imagenet_baidu_ref2000.pkl", "rb") as file:
+        baidu_ref = pk.load(file)
+    # baidu_ref = pk.load(open("evaluation_results/imagenet_baidu_ref2000.pkl"))
+    with open("evaluation_results/image_reference_cache_baidu.defaultdict", "rb") as file:
+        baidu_result = pk.load(file)
+    # print_result(baidu_result)
+    with open("evaluation_results/baidu_train_log.defaultdict", "rb") as file:
+        baidu_log = pk.load(file)
+    ref_size_mean = compute_att(baidu_ref,"ref_size")
+    compress_size_mean = compute_att(baidu_result,"size")
+    # print_log(baidu_log)
+
     # with open("evaluation_results/image_reference_cache_baidu_initial_DNIM.defaultdict","rb") as file:
     #     face_retrain_DNIM = pk.load(file)
-    with open("evaluation_results/image_reference_cache_baidu_retrain_DNIM.defaultdict", 'rb') as f:
-        ref_cache = pk.load(f)
-    with open("evaluation_results/baidu_all_DNIM_imagenet.defaultdict", 'rb') as f:
-        ref_cache = pk.load(f)
-    print_cache(ref_cache)
+    # with open("evaluation_results/image_reference_cache_baidu_retrain_DNIM.defaultdict", 'rb') as f:
+    #     ref_cache = pk.load(f)
+    # with open("evaluation_results/baidu_all_DNIM_imagenet.defaultdict", 'rb') as f:
+    #     ref_cache = pk.load(f)
+    # print_cache(ref_cache)
     # 提取rm缓存
     # rm = ResultManager('evaluation_results')
     # rm.print_meta_info()
@@ -63,4 +81,4 @@ if __name__=="__main__":
     # face = rm.load(1)
     # print_cache(face)
     # retain的log结果
-    ref = list(ref_cache.items())
+    # ref = list(ref_cache.items())

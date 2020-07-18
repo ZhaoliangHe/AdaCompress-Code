@@ -180,16 +180,18 @@ class AmazonRekognition(Baidu):
 
 if __name__ == '__main__':
     # cloud_agent = FacePP()
-    # cloud_agent = Baidu()
-    cloud_agent = AmazonRekognition()
-    ref_quality = 25
+    cloud_agent = Baidu()
+    # cloud_agent = AmazonRekognition()
+    ref_quality = 15
     # image = Image.open('/home/hsli/imagenet-data/train/n03085013/n03085013_773.JPEG')
     # image = Image.open('/home/imagenet-data/train/n03085013/n03085013_773.JPEG')
     image_path = '/home/imagenet-data/train/n03085013/n03085013_353.JPEG'
-    image_path = "/home/imagenet-data/train//n03888605/n03888605_13940.JPEG"
+    # image_path = "/home/imagenet-data/train//n03888605/n03888605_13940.JPEG"
     image = Image.open(image_path)
+    choose_action_time = time.time()
     error_code, reg_results, ref_size = cloud_agent.recognize(image, ref_quality)
-
+    feedback_time = time.time()
+    print("upload and feedback time: ", feedback_time - choose_action_time)
     gt_id = np.argmax([line['score'] for line in reg_results])
     ref_label = reg_results[gt_id]['keyword']
     ref_confidence = reg_results[gt_id]['score']
